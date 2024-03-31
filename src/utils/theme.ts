@@ -21,7 +21,7 @@ export const darkTheme: ITHEME = {
   text: "#fff",
   grey1: "#272727",
   authBlue: "#3DA6FF",
-  grey2: "#272727",
+  grey2: "#282828",
   settingsBg: "#282828",
   youtubeRed: "#FF0000",
   settingsShadow: "#0E0E0E",
@@ -54,6 +54,3 @@ export const THEMES = {
 };
 
 // style-components setting for annotations
-declare module "styled-components" {
-  export interface DefaultTheme extends ITHEME {}
-}

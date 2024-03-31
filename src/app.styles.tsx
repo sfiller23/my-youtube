@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         -ms-box-sizing: border-box;
     }
 
-    ::-webski-scrollbar {
+    ::-webkit-scrollbar {
         width: 0;
         background: transparent;
     }
@@ -23,6 +23,9 @@ export const GlobalStyle = createGlobalStyle`
 
     &::-webkit-scrollbar {
         display: none;
+    }
+    input:focus{
+        outline: none;
     }
 `;
 export const AppContainer = styled.div`
