@@ -16,13 +16,13 @@ const HomePageVideos = () => {
     <StyledHomePageVideos>
       <RegularVideoThumbnailsContainer>
         {FIRST_VIDEO_SECTION.map((video, index) => (
-          <RegularVideoItem video={video} />
+          <RegularVideoItem key={index} video={video} />
         ))}
       </RegularVideoThumbnailsContainer>
       <VideoShorts videos={SECOND_VIDEO_SECTION} />
       <RegularVideoThumbnailsContainer>
         {THIRD_VIDEO_SECTION.map((video, index) => (
-          <RegularVideoItem video={video} />
+          <RegularVideoItem key={index} video={video} />
         ))}
       </RegularVideoThumbnailsContainer>
     </StyledHomePageVideos>

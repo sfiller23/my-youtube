@@ -29,12 +29,8 @@ const Header = () => {
 
   const { text, setSearchBarText, toggleMenuSize } = useAppContext();
 
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const { transcript, listening, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
 
   const { pathname } = useLocation();
 

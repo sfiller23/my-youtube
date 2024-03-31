@@ -6,8 +6,7 @@ import AuthButton from "../authButton/AuthButton";
 import { LargeMenuSection, MenuItem, StyledMenu } from "./Menu.styles";
 
 const Menu = () => {
-  const { isMenuSmall, text, activeMenuText, setActiveMenuText } =
-    useAppContext();
+  const { isMenuSmall, text, activeMenuText } = useAppContext();
 
   if (isMenuSmall) {
     return (
