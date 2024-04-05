@@ -29,7 +29,7 @@ import {
 } from "./WatchVideoContents.styles";
 
 const WatchVideoContents = () => {
-  const { videos, fetchVideo, videoToWatchData, isFetchingVideos, text } =
+  const { videos, fetchVideo, videoToWatchData, isFetching, text } =
     useAppContext();
   const { id } = useParams();
 
@@ -41,7 +41,7 @@ const WatchVideoContents = () => {
     }
   }, [id]);
 
-  if (isFetchingVideos) {
+  if (isFetching) {
     return <LoadingBackdrop />;
   }
 

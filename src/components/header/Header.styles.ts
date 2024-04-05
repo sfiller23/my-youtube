@@ -1,55 +1,28 @@
+import { CSSProperties } from "preact/compat";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
-export const StyledHeader = styled.div`
+export const StyledHeader = styled.header`
   width: 100%;
   height: 5.8vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  /* background-color: red; */
 `;
 
-export const LeftSection = styled.div`
+export const CenteredSection = styled.section<{
+  cssProps?: CSSProperties;
+}>`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: ${(props) => props.cssProps?.gap ?? "1rem"};
+  position: ${(props) => props.cssProps?.position ?? "static"};
 `;
 
-export const SearchSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
-export const HeaderMoreSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  position: relative;
-`;
-
-export const LogoSection = styled(Link)`
+export const LogoLinkToHome = styled(Link)`
   display: flex;
   align-items: center;
   gap: 0.2rem;
   text-decoration: none;
-`;
-
-export const SearchBar = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 3.5rem;
-  width: 33.5vw;
-  border: 1px solid ${({ theme }) => theme.grey2};
-  border-radius: 100rem;
-  background-color: ${({ theme }) => theme.grey2};
-  overflow: hidden;
-
-  input {
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
-    font-size: inherit;
-    padding-left: 1rem;
-  }
 `;

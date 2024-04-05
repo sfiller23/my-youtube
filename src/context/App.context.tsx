@@ -23,11 +23,12 @@ interface IAppContextValue {
   activeCategory: string;
   setActiveCategory: StateUpdater<string>;
   videos: Video[];
-  isFetchingVideos: boolean;
+  isFetching: boolean;
   videoToWatch: number;
   setVideoToWatch: StateUpdater<number>;
   videoToWatchData: Video | null;
   fetchVideo: (id: string) => Promise<void>;
+  fetchVideos: (query: string) => Promise<void>;
 }
 
 const AppContext = createContext<IAppContextValue | null>(null);
@@ -55,7 +56,7 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
   const [activeMenuText, setActiveMenuText] = useState<string>("home");
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [videos, setVideos] = useState<Video[]>([]);
-  const [isFetchingVideos, setIsFetchingVideos] = useState<boolean>(false);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
   const [videoToWatch, setVideoToWatch] = useState<number>(0);
   const [videoToWatchData, setVideoToWatchData] = useState<Video | null>(null);
 
@@ -71,26 +72,22 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     if (activeCategory) fetchVideos(activeCategory);
   }, [activeCategory]);
 
-  useEffect(() => {
-    if (searchBarText) fetchVideos(searchBarText);
-  }, [searchBarText]);
-
   const fetchVideos = async (query: string) => {
-    setIsFetchingVideos(true);
+    setIsFetching(true);
     try {
       const response = await client.videos.search({ query, per_page: 44 });
       setVideos((response as Videos).videos);
     } catch (error) {}
-    setIsFetchingVideos(false);
+    setIsFetching(false);
   };
 
   const fetchVideo = async (id: string) => {
-    setIsFetchingVideos(true);
+    setIsFetching(true);
     try {
       const response = await client.videos.show({ id });
       setVideoToWatchData(response as Video);
     } catch (error) {}
-    setIsFetchingVideos(false);
+    setIsFetching(false);
   };
 
   const toggleTheme = (): void => {
@@ -120,11 +117,12 @@ export const AppContextProvider = ({ children }: IAppContextProviderProps) => {
     activeCategory,
     setActiveCategory,
     videos,
-    isFetchingVideos,
+    isFetching,
     videoToWatch,
     setVideoToWatch,
     fetchVideo,
     videoToWatchData,
+    fetchVideos,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

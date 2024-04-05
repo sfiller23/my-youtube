@@ -12,15 +12,26 @@ const beats = keyframes`
   }
   `;
 
-export const Icon = styled.div<{ $showBackground?: boolean }>`
+export const StyledButton = styled.button<{ $showBackground?: boolean }>`
   background-color: ${({ theme, $showBackground }) =>
     $showBackground ? theme.grey2 : "transparent"};
+  transition: none;
+  border: none;
+  outline: none;
   border-radius: 100rem;
   color: ${({ theme }) => theme.text};
   display: flex;
   justify-content: center;
   padding: 0.6rem;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    border: none;
+  }
 
   &.menu {
     &:hover {

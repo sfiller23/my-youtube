@@ -5,7 +5,7 @@ const ToolTips = () => {
   return (
     <>
       {TOOLTIPS.map((id, index) => (
-        <Tooltip style={{ zIndex: "1000" }} id={id} key={index} noArrow />
+        <Tooltip style={{ zIndex: "999" }} id={id} key={index} noArrow />
       ))}
     </>
   );

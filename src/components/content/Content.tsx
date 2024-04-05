@@ -4,12 +4,12 @@ import HomePageVideos from "../homePageVideos/HomePageVideos";
 import { LoadingBackdrop, StyledContent } from "./Content.styles";
 
 const Content = () => {
-  const { isFetchingVideos } = useAppContext();
+  const { isFetching } = useAppContext();
   return (
     <StyledContent>
       <Categories />
       <HomePageVideos></HomePageVideos>
-      {isFetchingVideos && <LoadingBackdrop />}
+      {isFetching && <LoadingBackdrop />}
     </StyledContent>
   );
 };
